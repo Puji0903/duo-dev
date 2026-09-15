@@ -1,30 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WEBSITE PUJI & MALFA</title>
+    <title>Profiel DuoDev</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Nunito&display=swap" rel="stylesheet">
+    <style>
+        :root{
+    --ink: #3B2A20;
+    --brown: #8A5A3A;
+    --cream: #F5EEE3;
+}
+
+    body {
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    color: var(--ink);
+}
+
+    h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: #fff;
+    margin: 0;
+}
+    h1 span{
+    color: var(--cream);
+}
+
+    p {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.88);
+    margin-top: 20px;
+    max-width: 500px;
+}
+    .hero{
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    background: linear-gradient(115deg, var(--ink) 0%, var(--brown) 46%, var(--cream) 46%, var(--cream) 100%);
+}
+
+    .eyebrow{
+    color: var(--cream);
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+    .btn{
+    margin-top: 24px;
+    padding: 14px 28px;
+    background: var(--cream);
+    color: var(--ink);
+    border: none;
+    border-radius: 999px;
+    font-weight: 800;
+    cursor: pointer;
+}
+    </style>
 </head>
-
-<body style="background-color: black; color: bisque; text-align: center;">
-
-    <h1>WELCOME TO DUO DEV</h1>
-
-    <p>
-        Selamat datang di website sederhana kami!
-    </p>
-
-    <p>
-        Website ini dibuat oleh Malfalunah Rahmah dan Puji Ramadani, sebagai tempat
-        untuk belajar, berkarya, dan mengembangkan kemampuan
-        kami dalam dunia pemrograman.
-    </p>
-
-    <h2>MALFALUNAH RAHMAH & PUJI RAMADANI</h2>
-
-    <p>
-        Let's learn, create, and grow together!
-    </p>
-
+<body>
+    <header class="hero">
+        <div class="hero-content">
+            <p class="eyebrow">cuma project kelas, tapi kita niatin</p>
+            <h1>Welcome to <span>DuoDev</span></h1>
+            <p>Dua kepala, satu layar, dan baris-baris kode yang tumbuh jadi cerita.</p>
+            <button class="btn">intip project kita</button>
+        </div>
+    </header>
 </body>
+</html>
