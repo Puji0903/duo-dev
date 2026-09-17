@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DUO-DEV — Malfa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+    :root{
+        --yellow: #FFD400;
+        --black: #0b0a0a;
+        --blue: #1E4FD6;
+        --pink: #FF9FCE;
+        --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body{
+        margin: 0;
+        background: var(--black);
+        font-family: 'Nunito', sans-serif;
+        color: var(--white);
+    }
+
+    /* ---------- NAVBAR ---------- */
+    .navbar{
+        background: var(--yellow);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 22px 48px;
+    }
+    .logo{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .logo-icon{
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        border: 2px solid var(--black);
+        background: repeating-conic-gradient(var(--black) 0% 25%, transparent 0% 50%);
+        background-size: 60% 60%;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .logo-text{
+        font-family: 'Archivo Black', sans-serif;
+        font-size: 1.2rem;
+        color: var(--black);
+        font-style: italic;
+        text-decoration: underline;
+    }
+    .nav-links{
+        display: flex;
+        gap: 40px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .nav-links a{
+        color: var(--black);
+        text-decoration: underline;
+        font-weight: 800;
+        font-style: italic;
+        letter-spacing: 0.5px;
+    }
+
+    /* ---------- HERO PROFIL ---------- */
+    .profile-hero{
+        display: flex;
+        align-items: center;
+        gap: 56px;
+        padding: 72px 48px;
+        flex-wrap: wrap;
+    }
+    .profile-photo{
+        position: relative;
+        flex-shrink: 0;
+        width: 320px;
+    }
+    .photo-frame{
+        width: 100%;
+        aspect-ratio: 4/5;
+        border: 5px solid var(--blue);
+        border-radius: 14px;
+        overflow: hidden;
+        background: #ccc;
+    }
+    .photo-frame img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .photo-tag{
+        position: absolute;
+        top: -16px;
+        right: -16px;
+        background: var(--pink);
+        color: var(--black);
+        font-weight: 800;
+        font-size: 0.85rem;
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 3px solid var(--black);
+        transform: rotate(6deg);
+    }
+
+    .profile-text{
+        max-width: 460px;
+    }
+    .hi-text{
+        font-size: 1.2rem;
+        color: var(--yellow);
+        font-weight: 800;
+        margin: 0 0 6px;
+    }
+    .profile-name{
+        font-family: 'Archivo Black', sans-serif;
+        font-size: clamp(2.6rem, 5vw, 3.8rem);
+        margin: 0;
+        line-height: 1;
+    }
+    .profile-role{
+        font-size: 1.15rem;
+        color: var(--pink);
+        font-weight: 800;
+        margin: 14px 0 20px;
+    }
+    .profile-desc{
+        font-size: 1.05rem;
+        color: #D8D8D8;
+        line-height: 1.7;
+        margin: 0 0 28px;
+    }
+    .btn-back{
+        display: inline-block;
+        padding: 14px 30px;
+        background: var(--blue);
+        color: var(--white);
+        border: 3px solid var(--black);
+        border-radius: 999px;
+        font-weight: 800;
+        text-decoration: none;
+        transition: transform 0.15s ease;
+    }
+    .btn-back:hover{ transform: translateY(-3px); }
+
+    /* ---------- WRAP UMUM ---------- */
+    .wrap{
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 40px 48px 80px;
+    }
+    .section-label{
+        color: var(--yellow);
+        font-weight: 800;
+        font-size: 0.95rem;
+        margin: 0 0 12px;
+    }
+    .wrap h2{
+        font-family: 'Archivo Black', sans-serif;
+        font-size: 1.8rem;
+        margin: 0 0 24px;
+    }
+    section + section{ margin-top: 56px; }
+
+    /* ---------- SKILL TAGS ---------- */
+    .skills{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+    }
+    .skills span{
+        padding: 10px 22px;
+        background: var(--yellow);
+        color: var(--black);
+        font-weight: 800;
+        border-radius: 999px;
+        border: 3px solid var(--black);
+    }
+
+    /* ---------- HAL FAVORIT ---------- */
+    .fav-list{
+        display: grid;
+        gap: 14px;
+    }
+    .fav-item{
+        display: flex;
+        gap: 16px;
+        padding: 16px 20px;
+        background: #161616;
+        border: 2px solid var(--blue);
+        border-radius: 10px;
+        align-items: baseline;
+    }
+    .fav-item .label{
+        color: var(--pink);
+        font-weight: 800;
+        min-width: 90px;
+        flex-shrink: 0;
+    }
+    .fav-item .value{
+        color: var(--white);
+    }
+
+    /* ---------- CERITA/PENGALAMAN ---------- */
+    .story-text{
+        font-size: 1.05rem;
+        color: #D8D8D8;
+        line-height: 1.8;
+        max-width: 65ch;
+    }
+
+    /* ---------- GALERI ---------- */
+    .gallery{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+    }
+    .gallery-item{
+        position: relative;
+        aspect-ratio: 1/1;
+        border: 3px solid var(--blue);
+        border-radius: 10px;
+        overflow: hidden;
+        background: linear-gradient(150deg, var(--blue), var(--pink));
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .gallery-item:hover{
+        transform: scale(1.04) rotate(-1deg);
+        box-shadow: 0 14px 26px rgba(0,0,0,0.4);
+    }
+    .gallery-item:nth-child(2){ background: linear-gradient(150deg, var(--yellow), var(--blue)); }
+    .gallery-item:nth-child(3){ background: linear-gradient(150deg, var(--pink), var(--yellow)); }
+
+    .gallery-item img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+    .gallery-item .caption{
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 26px 14px 12px;
+        font-size: 0.9rem;
+        font-weight: 700;
+        background: linear-gradient(transparent, rgba(0,0,0,0.85));
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+    .gallery-item:hover .caption{ opacity: 1; }
+
+    /* ---------- KONTAK ---------- */
+    .contact-list{
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+    .contact-item{
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 16px 22px;
+        background: #161616;
+        border: 2px solid var(--blue);
+        border-radius: 10px;
+        text-decoration: none;
+        color: var(--white);
+        font-weight: 700;
+        transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+    .contact-item:hover{
+        transform: translateX(8px);
+        background: #1f1f1f;
+        border-color: var(--pink);
+    }
+    .contact-item .dot{
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--yellow);
+        flex-shrink: 0;
+    }
+
+    @media (max-width: 720px){
+        .navbar{ flex-wrap: wrap; gap: 16px; padding: 20px 24px; }
+        .profile-hero{ padding: 48px 24px; }
+        .wrap{ padding: 24px 24px 60px; }
+        .fav-item{ flex-direction: column; gap: 4px; }
+        .gallery{ grid-template-columns: repeat(2, 1fr); }
+        .gallery-item .caption{ opacity: 1; }
+    }
+</style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <div class="logo-icon"></div>
+            <span class="logo-text">DUO-DEV</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="duodev.html">HOME</a></li>
+            <li><a href="profil-puji.html">PUJI</a></li>
+            <li><a href="duodev.html#about">ABOUT US</a></li>
+        </ul>
+    </nav>
+
+    <header class="profile-hero">
+        <div class="profile-photo">
+            <div class="photo-frame">
+                <img src="malfa.jpeg" alt="Malfaluna Rahmah">
+            </div>
+            <span class="photo-tag">Halaman Individu</span>
+        </div>
+        <div class="profile-text">
+            <p class="hi-text">Hi, I'm</p>
+            <h1 class="profile-name">Malfa</h1>
+            <p class="profile-role">Sedang Belajar Web Development</p>
+            <p class="profile-desc">Masih newbie nich di HTML &amp; CSS, tapi lagi seneng-senengnya belajar bikin website. Ini salah satu project belajarku bareng Pujay buat tugas kelas.</p>
+            <a href="duodev.html" class="btn-back">← Go To Home</a>
+        </div>
+    </header>
+
+    <div class="wrap">
+
+        <section>
+            <p class="section-label">Skill</p>
+            <h2>Yang Sedang Dipelajari</h2>
+            <div class="skills">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>Git &amp; GitHub</span>
+                <span>Belajar JavaScript</span>
+            </div>
+        </section>
+
+        <section>
+            <p class="section-label">Hal Favorit</p>
+            <h2>Tentang Aku</h2>
+            <div class="fav-list">
+                <div class="fav-item">
+                    <span class="label">Hobi</span>
+                    <span class="value">Swimming, Running, Sleep hehe</span>
+                </div>
+                <div class="fav-item">
+                    <span class="label">Musik</span>
+                    <span class="value">Bruno Mars, Taylor Swift, Tulus</span>
+                </div>
+                <div class="fav-item">
+                    <span class="label">Cita-cita</span>
+                    <span class="value">Menjadi Ibu Kost 500 Pintu Kostan</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <p class="section-label">Cerita</p>
+            <h2>Perjalananku</h2>
+            <p class="story-text">Aku lagi berjuang selain jadi orang sukses mau jadi ibu kost, keliling dunia, Pergi Haji Berkali kali with my family.</p>
+        </section>
+
+        <section>
+            <p class="section-label">Galeri</p>
+            <h2>Momen</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="malfanari.jpeg" alt="Momen 1">
+                    <span class="caption">First Time Nari Disupport My Bubb</span>
+                </div>
+                <div class="gallery-item">
+                    <img src="baduy.jpeg" alt="Momen 2">
+                    <span class="caption">View Baduy</span>
+                </div>
+                <div class="gallery-item">
+                    <img src="malfapesawat.jpeg" alt="Momen 3">
+                    <span class="caption">Simulasi Pesawat Guys</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <p class="section-label">Kontak</p>
+            <h2>Hubungi Aku</h2>
+            <div class="contact-list">
+                <a class="contact-item" href="mflunarh@gmail.com">
+                    <span class="dot"></span> email
+                </a>
+                <a class="contact-item" href="https://instagram.com/mflunarh target="_blank">
+                    <span class="dot"></span> instagram
+                </a>
+                <a class="contact-item" href="https://wa.me/6285177879460" target="_blank">
+                    <span class="dot"></span> WhatsApp Me
+                </a>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
