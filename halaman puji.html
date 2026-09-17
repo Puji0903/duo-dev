@@ -4,17 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tentang Saya</title>
+
+    <title>Profil Puji - DUO-DEV</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Nunito:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+
     <style>
         :root {
-            --bg: #F1EFE9;
-            --panel: #3E3358;
-            --panel-text: #ECE7F5;
-            --panel-muted: #B7ADD1;
-            --ink: #201C1A;
-            --ink-soft: #6B655D;
-            --line: #DEDAD0;
-            --accent: #3E3358;
+            --yellow: #FFD400;
+            --black: #0b0a0a;
+            --blue: #1E4FD6;
+            --pink: #FF9FCE;
+            --white: #ffffff;
+            --cream: #F1EFE9;
+            --purple: #3E3358;
         }
 
         * {
@@ -23,264 +28,401 @@
 
         body {
             margin: 0;
-            background: var(--bg);
-            color: var(--ink);
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            font-family: 'Nunito', sans-serif;
         }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            background: var(--yellow);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 22px 48px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 2px solid var(--black);
+            background: repeating-conic-gradient(var(--black) 0% 25%,
+                    transparent 0% 50%);
+            background-size: 60% 60%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .logo-text {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.2rem;
+            color: var(--black);
+            font-style: italic;
+            text-decoration: underline;
+        }
+
+        .back-btn {
+            background: var(--blue);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 800;
+            padding: 10px 18px;
+            border-radius: 999px;
+            transition: 0.2s;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* ================= PROFILE ================= */
+
+        .profile {
+            max-width: 1000px;
+            margin: auto;
+            padding: 60px 40px;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .title p {
+            color: var(--pink);
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .title h1 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            margin: 0;
+            color: var(--yellow);
+        }
+
+        /* ================= CONTENT ================= */
 
         .layout {
             display: grid;
             grid-template-columns: 300px 1fr;
-            min-height: 100vh;
+            gap: 40px;
         }
 
-        /* ---------- SIDEBAR ---------- */
         .sidebar {
-            background: var(--panel);
-            color: var(--panel-text);
-            padding: 3rem 2rem;
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            overflow-y: auto;
+            background: var(--purple);
+            padding: 30px;
+            border-radius: 20px;
+            height: fit-content;
         }
 
         .avatar {
-            width: 84px;
-            height: 84px;
+            width: 150px;
+            height: 150px;
+            margin: auto auto 25px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
+            overflow: hidden;
+            border: 5px solid var(--yellow);
         }
 
-        .sidebar h1 {
-            font-size: 1.7rem;
-            font-weight: 600;
-            margin: 0 0 0.2rem;
-            line-height: 1.2;
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .sidebar .role {
-            font-size: 0.95rem;
-            color: var(--panel-muted);
-            margin: 0 0 2rem;
+        .sidebar h2 {
+            text-align: center;
+            margin: 0;
         }
 
-        .sidebar-section {
-            margin-bottom: 2rem;
+        .role {
+            text-align: center;
+            color: var(--pink);
+            font-weight: 700;
         }
 
-        .sidebar-label {
-            font-size: 0.72rem;
-            letter-spacing: 0.03em;
-            color: var(--panel-muted);
-            margin: 0 0 0.6rem;
+        .contact {
+            margin-top: 30px;
         }
 
-        .contact-row {
+        .contact-title {
+            color: var(--yellow);
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .contact a {
             display: block;
-            color: var(--panel-text);
+            color: var(--white);
             text-decoration: none;
-            font-size: 0.9rem;
-            margin-bottom: 0.55rem;
-            border-bottom: 1px solid transparent;
+            margin-bottom: 10px;
         }
 
-        .contact-row:hover {
-            border-bottom-color: var(--panel-muted);
-        }
+        /* ================= MAIN ================= */
 
-        .skill-line {
-            font-size: 0.9rem;
-            color: var(--panel-text);
-            padding: 0.4rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-        }
-
-        .skill-line:last-child {
-            border-bottom: none;
-        }
-
-        /* ---------- MAIN ---------- */
         .main {
-            padding: 4rem 4rem 5rem;
-            max-width: 760px;
+            background: var(--cream);
+            color: #201C1A;
+            padding: 40px;
+            border-radius: 20px;
         }
 
-        .eyebrow {
-            font-size: 0.8rem;
-            color: var(--accent);
-            margin: 0 0 0.4rem;
+        .section {
+            margin-bottom: 40px;
         }
 
-        .main h2 {
-            font-family: Georgia, 'Iowan Old Style', serif;
-            font-size: 1.7rem;
-            font-weight: 400;
-            margin: 0 0 1.2rem;
+        .section:last-child {
+            margin-bottom: 0;
         }
 
-        .main p {
-            font-family: Georgia, 'Iowan Old Style', serif;
-            font-size: 1.08rem;
-            line-height: 1.75;
-            color: var(--ink);
-            max-width: 62ch;
-            margin: 0 0 1rem;
+        .section-label {
+            color: var(--blue);
+            font-weight: 800;
+            margin-bottom: 5px;
         }
 
-        section {
-            margin-bottom: 3.2rem;
-        }
-
-        section:first-of-type {
+        .section h2 {
+            font-family: Georgia, serif;
+            font-size: 2rem;
             margin-top: 0;
         }
 
-        hr {
-            border: none;
-            border-top: 1px solid var(--line);
-            margin: 3.2rem 0 0;
+        .section p {
+            font-family: Georgia, serif;
+            font-size: 1.08rem;
+            line-height: 1.8;
         }
 
-        /* favorit as definition rows */
+        /* ================= FAVORITES ================= */
+
         .fav-rows {
-            display: grid;
-            gap: 0;
-            border-top: 1px solid var(--line);
+            border-top: 1px solid #DEDAD0;
         }
 
         .fav-row {
             display: grid;
             grid-template-columns: 130px 1fr;
-            padding: 0.85rem 0;
-            border-bottom: 1px solid var(--line);
-            font-size: 0.95rem;
+            padding: 15px 0;
+            border-bottom: 1px solid #DEDAD0;
         }
 
         .fav-row .k {
-            color: var(--ink-soft);
+            color: #6B655D;
+            font-weight: 700;
         }
 
         .fav-row .v {
-            font-family: Georgia, 'Iowan Old Style', serif;
+            font-family: Georgia, serif;
         }
 
-        /* gallery asymmetric */
-        .gallery {
-            display: grid;
-            grid-template-columns: 1.3fr 1fr;
-            grid-template-rows: auto auto;
-            gap: 12px;
-        }
-
-        .g-item {
-            background: #E3DFD4;
-            border: 1px solid var(--line);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--ink-soft);
-            font-size: 0.85rem;
-            min-height: 140px;
-        }
-
-        .g-item.big {
-            grid-row: span 2;
-            min-height: 300px;
-        }
+        /* ================= FOOTER ================= */
 
         footer {
-            font-size: 0.8rem;
-            color: var(--ink-soft);
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--line);
+            text-align: center;
+            margin-top: 50px;
+            color: var(--pink);
+            font-weight: 700;
         }
 
-        @media (max-width: 820px) {
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 800px) {
+
+            .navbar {
+                padding: 20px;
+            }
+
+            .profile {
+                padding: 40px 20px;
+            }
+
             .layout {
                 grid-template-columns: 1fr;
             }
 
-            .sidebar {
-                position: static;
-                height: auto;
-            }
-
             .main {
-                padding: 2.5rem 1.5rem 3rem;
+                padding: 25px;
             }
 
-            .gallery {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .g-item.big {
-                grid-row: span 1;
-                min-height: 140px;
+            .fav-row {
+                grid-template-columns: 1fr;
+                gap: 5px;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="layout">
 
-        <aside class="sidebar">
-            <div class="avatar">ini puji</div>
-            <h1>Puji Ramadani</h1>
-            <p class="role">Mahasiswa</p>
+    <!-- ================= NAVBAR ================= -->
 
-            <div class="sidebar-section">
-                <p class="sidebar-label">Kontak</p>
-                <a class="contact-row" href="mailto:email@contoh.com">puji@gmail.com</a>
-                <a class="contact-row" href="https://instagram.com/username" target="_blank"
-                    rel="noopener">@rmdni_.p</a>
-                <a class="contact-row" href="https://wa.me/62812xxxxxxx" target="_blank" rel="noopener">08123321456</a>
-            </div>
+    <nav class="navbar">
 
-        </aside>
+        <div class="logo">
+            <div class="logo-icon"></div>
+            <span class="logo-text">DUO-DEV</span>
+        </div>
 
-        <main class="main">
+        <!-- KEMBALI KE HALAMAN PERTAMA -->
+        <a href="duodev.html" class="back-btn">
+            ← Kembali
+        </a>
 
-            <section>
-                <p class="eyebrow">haloow</p>
-                <h2>about me bukan baout you</h2>
-                <p> Hello! gw Puji, certified drakor enthusiast dan pacar sah Martin Edwards dari CORTIS (sah menurut
-                    gw). Hobi gw itu nonton drakor, baca buku, sama nyoba hal-hal baru, dannsuka kepo dikit.
-                    gw tipe orang yang kalau penasaran harus cari tahu sampai rasa penasarannya lunas. Suka hal-hal
-                    baru, suka berimajinasi, dan kadang hidu gw sendiri keerasa kaya side quest yang nggak ada habisnya.
+    </nav>
+
+
+    <!-- ================= PROFILE ================= -->
+
+    <main class="profile">
+
+        <div class="title">
+            <p>HALLOOO</p>
+            <h1>ABOUT PUJI</h1>
+        </div>
+
+
+        <div class="layout">
+
+            <!-- ================= SIDEBAR ================= -->
+
+            <aside class="sidebar">
+
+                <div class="avatar">
+                    <img src="puji.jpeg" alt="Foto Puji">
+                </div>
+
+                <h2>Puji Ramadani</h2>
+
+                <p class="role">
+                    Mahasiswa
                 </p>
 
-            </section>
 
-            <section>
-                <p class="eyebrow">yang puji suka</p>
-                <h2>suka suka puji</h2>
-                <div class="fav-rows">
-                    <div class="fav-row"><span class="k">Hobi</span><span class="v">baca buku alias novel, nonton, n
-                            masak klo mood</span></div>
-                    <div class="fav-row"><span class="k">Musik</span><span class="v">i lop bruno mars, olia rodrigo, n
-                            taylor swift
-                            favorit</span></div>
-                    <div class="fav-row"><span class="k">Cita-cita</span><span class="v">mau jadi oarnga sukses banyak
-                            duit biar bisa slow living
-                            impianmu</span></div>
-                    <div class="fav-row"><span class="k">Lokasi</span><span class="v">di bumi</span></div>
+                <div class="contact">
+
+                    <div class="contact-title">
+                        KONTAK
+                    </div>
+
+                    <a href="mailto:puji@gmail.com">
+                        📧 puji@gmail.com
+                    </a>
+
+                    <a href="https://instagram.com/username" target="_blank" rel="noopener">
+                        📷 @rmdni_.p
+                    </a>
+
+                    <a href="https://wa.me/628123321456" target="_blank" rel="noopener">
+                        📱 08123321456
+                    </a>
+
                 </div>
-            </section>
 
-            <footer>© puj puj</footer>
+            </aside>
 
-        </main>
 
-    </div>
+            <!-- ================= MAIN CONTENT ================= -->
+
+            <div class="main">
+
+                <section class="section">
+
+                    <div class="section-label">
+                        HALOOW
+                    </div>
+
+                    <h2>
+                        ini About me ya bukan about you
+                    </h2>
+
+                    <p>
+                        Hello! gw Puji, certified drakor enthusiast
+                        dan pacar sah Martin Edwards dari CORTIS
+                        (sah menurut gw). Hobi gw itu nonton drakor,
+                        baca buku, sama nyoba hal-hal baru, dan suka
+                        kepo dikit.
+                    </p>
+
+                    <p>
+                        Gw tipe orang yang kalau penasaran harus cari
+                        tahu sampai rasa penasarannya lunas. Suka
+                        hal-hal baru, suka berimajinasi, dan kadang
+                        hidup gw sendiri kerasa kayak side quest
+                        yang nggak ada habisnya.
+                    </p>
+
+                </section>
+
+
+                <!-- ================= FAVORIT ================= -->
+
+                <section class="section">
+
+                    <div class="section-label">
+                        YANG PUJI SUKA
+                    </div>
+
+                    <h2>
+                        Suka-suka Puji
+                    </h2>
+
+                    <div class="fav-rows">
+
+                        <div class="fav-row">
+                            <span class="k">Hobi</span>
+                            <span class="v">
+                                Baca buku alias novel, nonton,
+                                n masak kalau mood.
+                            </span>
+                        </div>
+
+                        <div class="fav-row">
+                            <span class="k">Musik</span>
+                            <span class="v">
+                                Bruno Mars, Olivia Rodrigo,
+                                n Taylor Swift.
+                            </span>
+                        </div>
+
+                        <div class="fav-row">
+                            <span class="k">Cita-cita</span>
+                            <span class="v">
+                                Mau jadi orang sukses dan punya
+                                banyak duit biar bisa slow living.
+                            </span>
+                        </div>
+
+                        <div class="fav-row">
+                            <span class="k">Lokasi</span>
+                            <span class="v">
+                                Di bumi
+                            </span>
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </div>
+
+
+        <footer>
+            © Puji Puji — DUO-DEV
+        </footer>
+
+    </main>
+
 </body>
 
 </html>
