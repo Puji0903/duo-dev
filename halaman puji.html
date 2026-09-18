@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Profil Puji - DUO-DEV</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Nunito:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --yellow: #FFD400;
+            --black: #0b0a0a;
+            --blue: #1E4FD6;
+            --pink: #FF9FCE;
+            --white: #ffffff;
+            --cream: #F1EFE9;
+            --purple: #3E3358;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--black);
+            color: var(--white);
+            font-family: 'Nunito', sans-serif;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            background: var(--yellow);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 22px 48px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 2px solid var(--black);
+            background: repeating-conic-gradient(var(--black) 0% 25%,
+                    transparent 0% 50%);
+            background-size: 60% 60%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .logo-text {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.2rem;
+            color: var(--black);
+            font-style: italic;
+            text-decoration: underline;
+        }
+
+        .back-btn {
+            background: var(--blue);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 800;
+            padding: 10px 18px;
+            border-radius: 999px;
+            transition: 0.2s;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* ================= PROFILE ================= */
+
+        .profile {
+            max-width: 1000px;
+            margin: auto;
+            padding: 60px 40px;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .title p {
+            color: var(--pink);
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .title h1 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            margin: 0;
+            color: var(--yellow);
+        }
+
+        /* ================= CONTENT ================= */
+
+        .layout {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+        }
+
+        .sidebar {
+            background: var(--purple);
+            padding: 30px;
+            border-radius: 20px;
+            height: fit-content;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            margin: auto auto 25px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid var(--yellow);
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin: 0;
+        }
+
+        .role {
+            text-align: center;
+            color: var(--pink);
+            font-weight: 700;
+        }
+
+        .contact {
+            margin-top: 30px;
+        }
+
+        .contact-title {
+            color: var(--yellow);
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .contact a {
+            display: block;
+            color: var(--white);
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+
+        /* ================= MAIN ================= */
+
+        .main {
+            background: var(--cream);
+            color: #201C1A;
+            padding: 40px;
+            border-radius: 20px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-label {
+            color: var(--blue);
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .section h2 {
+            font-family: Georgia, serif;
+            font-size: 2rem;
+            margin-top: 0;
+        }
+
+        .section p {
+            font-family: Georgia, serif;
+            font-size: 1.08rem;
+            line-height: 1.8;
+        }
+
+        /* ================= FAVORITES ================= */
+
+        .fav-rows {
+            border-top: 1px solid #DEDAD0;
+        }
+
+        .fav-row {
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            padding: 15px 0;
+            border-bottom: 1px solid #DEDAD0;
+        }
+
+        .fav-row .k {
+            color: #6B655D;
+            font-weight: 700;
+        }
+
+        .fav-row .v {
+            font-family: Georgia, serif;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: var(--pink);
+            font-weight: 700;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 800px) {
+
+            .navbar {
+                padding: 20px;
+            }
+
+            .profile {
+                padding: 40px 20px;
+            }
+
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .main {
+                padding: 25px;
+            }
+
+            .fav-row {
+                grid-template-columns: 1fr;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            <div class="logo-icon"></div>
+            <span class="logo-text">DUO-DEV</span>
+        </div>
+
+        <!-- KEMBALI KE HALAMAN PERTAMA -->
+        <a href="duodev.html" class="back-btn">
+            ← Kembali
+        </a>
+
+    </nav>
+
+
+    <!-- ================= PROFILE ================= -->
+
+    <main class="profile">
+
+        <div class="title">
+            <p>HALLOOO</p>
+            <h1>ABOUT PUJI</h1>
+        </div>
+
+
+        <div class="layout">
+
+            <!-- ================= SIDEBAR ================= -->
+
+            <aside class="sidebar">
+
+                <div class="avatar">
+                    <img src="puji.jpeg" alt="Foto Puji">
+                </div>
+
+                <h2>Puji Ramadani</h2>
+
+                <p class="role">
+                    Mahasiswa
+                </p>
+
+
+                <div class="contact">
+
+                    <div class="contact-title">
+                        KONTAK
+                    </div>
+
+                    <a href="mailto:puji@gmail.com">
+                        puji@gmail.com
+                    </a>
+
+                    <a href="https://instagram.com/username" target="_blank" rel="noopener">
+                        @rmdni_.p
+                    </a>
+
+                    <a href="https://wa.me/628123321456" target="_blank" rel="noopener">
+                        08123321456
+                    </a>
+
+                </div>
+
+            </aside>
+
+
+            <!-- ================= MAIN CONTENT ================= -->
+
+            <div class="main">
+
+                <section class="section">
+
+                    <div class="section-label">
+                        HALOOW
+                    </div>
+
+                    <h2>
+                        ini About me ya bukan about you
+                    </h2>
+
+                    <p>
+                        Hello! gw Puji, certified drakor enthusiast
+                        dan pacar sah Martin Edwards dari CORTIS
+                        (sah menurut gw). Hobi gw itu nonton drakor,
+                        baca buku, sama nyoba hal-hal baru, dan suka
+                        kepo dikit.
+                    </p>
+
+                    <p>
+                        Gw tipe orang yang kalau penasaran harus cari
+                        tahu sampai rasa penasarannya lunas. Suka
+                        hal-hal baru, suka berimajinasi, dan kadang
+                        hidup gw sendiri kerasa kayak side quest
+                        yang nggak ada habisnya.
+                    </p>
+
+                </section>
+
+
+                <!-- ================= FAVORIT ================= -->
+
+                <section class="section">
+
+                    <div class="section-label">
+                        YANG PUJI SUKA
+                    </div>
+
+                    <h2>
+                        Suka-suka Puji
+                    </h2>
+
+                    <div class="fav-rows">
+
+                        <div class="fav-row">
+                            <span class="k">Hobi</span>
+                            <span class="v">
+                                Baca buku alias novel, nonton,
+                                n masak kalau mood.
+                            </span>
+                        </div>
+
+                        <div class="fav-row">
+                            <span class="k">Musik</span>
+                            <span class="v">
+                                i lopp Bruno Mars, Olivia Rodrigo,
+                                n Taylor Swift.
+                            </span>
+                        </div>
+
+                        <div class="fav-row">
+                            <span class="k">Cita-cita</span>
+                            <span class="v">
+                                Mau jadi orang sukses dan punya
+                                banyak duit biar bisa slow living.
+                            </span>
+                        </div>
+
+                        <div class="fav-row">
+                            <span class="k">Lokasi</span>
+                            <span class="v">
+                                Di bumi
+                            </span>
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </div>
+
+
+        <footer>
+            © Puji Puji — DUO-DEV
+        </footer>
+
+    </main>
+
+</body>
+
+</html>
