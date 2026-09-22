@@ -83,6 +83,53 @@
             transform: translateY(-3px);
         }
 
+        /* ================= NAV MENU & TOGGLE ================= */
+
+        .nav-menu{
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            order: 3;
+        }
+
+        .nav-links{
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a{
+            color: var(--black);
+            text-decoration: underline;
+            font-weight: 800;
+            font-style: italic;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-toggle{
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 34px;
+            height: 34px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            order: 2;
+        }
+
+        .nav-toggle span{
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: var(--black);
+            border-radius: 2px;
+        }
+
         /* ================= PROFILE ================= */
 
         .profile {
@@ -258,6 +305,34 @@
                 gap: 5px;
             }
         }
+
+        @media (max-width: 640px) {
+
+            .navbar{ flex-wrap: wrap; gap: 12px; }
+
+            .nav-toggle{ display: flex; }
+
+            .nav-menu{
+                width: 100%;
+                display: none;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 14px;
+                margin-top: 8px;
+            }
+
+            .nav-menu.open{ display: flex; }
+
+            .nav-links{
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .avatar{
+                width: 110px;
+                height: 110px;
+            }
+        }
     </style>
 </head>
 
@@ -272,10 +347,21 @@
             <span class="logo-text">DUO-DEV</span>
         </div>
 
-        <!-- KEMBALI KE HALAMAN PERTAMA -->
-        <a href="duodev.html" class="back-btn">
-            ← Kembali
-        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="navMenu">
+            <span></span><span></span><span></span>
+        </button>
+
+        <div class="nav-menu" id="navMenu">
+            <ul class="nav-links">
+                <li><a href="duodev.html">HOME</a></li>
+                <li><a href="profil-malfa.html">MALFA</a></li>
+                <li><a href="halaman_puji.html">PUJI</a></li>
+            </ul>
+            <!-- KEMBALI KE HALAMAN PERTAMA -->
+            <a href="duodev.html" class="back-btn">
+                ← Kembali
+            </a>
+        </div>
 
     </nav>
 
@@ -422,6 +508,15 @@
         </footer>
 
     </main>
+
+    <script>
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        navToggle.addEventListener('click', () => {
+            const isOpen = navMenu.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', isOpen);
+        });
+    </script>
 
 </body>
 
