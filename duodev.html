@@ -77,6 +77,81 @@
             font-style: italic;
             letter-spacing: 0.5px;
         }
+    /* ---------- NAV TOGGLE (HAMBURGER) ---------- */
+    .nav-toggle{
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 34px;
+        height: 34px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        order: 2;
+    }
+    .nav-toggle span{
+        display: block;
+        width: 100%;
+        height: 3px;
+        background: var(--black);
+        border-radius: 2px;
+    }
+    .nav-menu{
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        order: 3;
+    }
+
+    @media (max-width: 900px){
+        .navbar{ flex-wrap: wrap; gap: 16px; padding: 20px 24px; }
+        .about-heading{ padding: 48px 24px 32px; }
+        .cards{ padding: 20px 24px 60px; }
+    }
+
+    @media (max-width: 640px){
+        .nav-toggle{ display: flex; }
+        .nav-menu{
+            width: 100%;
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+            margin-top: 12px;
+        }
+        .nav-menu.open{ display: flex; }
+        .nav-links{
+            flex-direction: column;
+            gap: 14px;
+        }
+        .search-box{ width: 100%; }
+        .title-pill{ padding: 22px 40px 22px 28px; }
+        .smiley{ width: 60px; height: 60px; margin-left: -20px; }
+        .about-heading{ flex-direction: column; align-items: flex-start; }
+    }
+
+    a.title-wrap{
+    text-decoration: none;
+}
+a.card{
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+a.card:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 16px 28px rgba(0,0,0,0.35);
+}
+.photo-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+}
 
         .search-box {
             display: flex;
@@ -345,14 +420,19 @@
             <div class="logo-icon"></div>
             <span class="logo-text">DUO-DEV</span>
         </div>
-        <ul class="nav-links">
-            <li><a href="index.html">HOME</a></li>
-            <li><a href="#">PAGE</a></li>
-            <li><a href="#about">ABOUT US</a></li>
-        </ul>
-        <div class="search-box">
-            <input type="text" placeholder="Search">
-            <button class="search-btn">🔍</button>
+        <button class="nav-toggle" id="navToggle" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="navMenu">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-menu" id="navMenu">
+            <ul class="nav-links">
+                <li><a href="duodev.html">HOME</a></li>
+                <li><a href="profil-malfa.html">MALFA</a></li>
+                <li><a href="halaman_puji.html">PUJI</a></li>
+            </ul>
+            <div class="search-box">
+                <input type="text" placeholder="Search">
+                <button class="search-btn">🔍</button>
+            </div>
         </div>
     </nav>
 
@@ -383,11 +463,24 @@
             </div>
         </a>
 
+<<<<<<< HEAD
         <a href="profil-puji.html" class="card">
             <div class="card-tab"><span class="x-icon">✕</span></div>
             <div class="card-photo">
                 <img src="puji.jpeg" alt="Puji Ramadani" class="photo-img">
                 <div class="flower"></div>
+=======
+    <a href="halaman_puji.html" class="card">
+        <div class="card-tab"><span class="x-icon">✕</span></div>
+        <div class="card-photo">
+            <img src="puji.jpeg" alt="Puji Ramadhani" class="photo-img">
+            <div class="flower"></div>
+        </div>
+        <div class="card-footer">
+            <div>
+                <p class="name">Puji Ramadhani</p>
+                <p class="role">CEO TAMBANG</p>
+>>>>>>> halaman-malfa
             </div>
             <div class="card-footer">
                 <div>
@@ -398,6 +491,15 @@
             </div>
         </a>
     </section>
+
+    <script>
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        navToggle.addEventListener('click', () => {
+            const isOpen = navMenu.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', isOpen);
+        });
+    </script>
 
 </body>
 

@@ -289,6 +289,33 @@
         flex-shrink: 0;
     }
 
+    /* ---------- NAV TOGGLE (HAMBURGER) ---------- */
+    .nav-toggle{
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 34px;
+        height: 34px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        order: 2;
+    }
+    .nav-toggle span{
+        display: block;
+        width: 100%;
+        height: 3px;
+        background: var(--black);
+        border-radius: 2px;
+    }
+    .nav-menu{
+        display: flex;
+        align-items: center;
+        order: 3;
+    }
+
     @media (max-width: 720px){
         .navbar{ flex-wrap: wrap; gap: 16px; padding: 20px 24px; }
         .profile-hero{ padding: 48px 24px; }
@@ -296,6 +323,22 @@
         .fav-item{ flex-direction: column; gap: 4px; }
         .gallery{ grid-template-columns: repeat(2, 1fr); }
         .gallery-item .caption{ opacity: 1; }
+    }
+
+    @media (max-width: 640px){
+        .nav-toggle{ display: flex; }
+        .nav-menu{
+            width: 100%;
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 14px;
+            margin-top: 12px;
+        }
+        .nav-menu.open{ display: flex; }
+        .profile-hero{ flex-direction: column; text-align: center; }
+        .profile-photo{ width: 240px; margin: 0 auto; }
+        .gallery{ grid-template-columns: 1fr; }
     }
 </style>
 </head>
@@ -306,11 +349,16 @@
             <div class="logo-icon"></div>
             <span class="logo-text">DUO-DEV</span>
         </div>
-        <ul class="nav-links">
-            <li><a href="duodev.html">HOME</a></li>
-            <li><a href="profil-puji.html">PUJI</a></li>
-            <li><a href="duodev.html#about">ABOUT US</a></li>
-        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="navMenu">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-menu" id="navMenu">
+            <ul class="nav-links">
+                <li><a href="duodev.html">HOME</a></li>
+                <li><a href="profil-malfa.html">MALFA</a></li>
+                <li><a href="halaman_puji.html">PUJI</a></li>
+            </ul>
+        </div>
     </nav>
 
     <header class="profile-hero">
@@ -393,16 +441,25 @@
                 <a class="contact-item" href="mflunarh@gmail.com">
                     <span class="dot"></span> email
                 </a>
-                <a class="contact-item" href="https://instagram.com/mflunarh target="_blank">
+                <a class="contact-item" href="https://instagram.com/mflunarh" target="_blank">
                     <span class="dot"></span> instagram
                 </a>
                 <a class="contact-item" href="https://wa.me/6285177879460" target="_blank">
-                    <span class="dot"></span> WhatsApp Me
+                    <span class="dot"></span> whatsApp Me
                 </a>
             </div>
         </section>
 
     </div>
+
+    <script>
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        navToggle.addEventListener('click', () => {
+            const isOpen = navMenu.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', isOpen);
+        });
+    </script>
 
 </body>
 </html>
