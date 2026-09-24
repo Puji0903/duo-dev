@@ -153,6 +153,10 @@ a.card:hover{
     inset: 0;
 }
 
+        .nav-links a:hover {
+            opacity: 0.7;
+        }
+
         .search-box {
             display: flex;
             align-items: center;
@@ -189,6 +193,10 @@ a.card:hover{
             flex-shrink: 0;
         }
 
+        .search-btn:hover {
+            transform: scale(1.1);
+        }
+
         /* ---------- HERO / ABOUT US TITLE ---------- */
         .about-heading {
             display: flex;
@@ -197,6 +205,7 @@ a.card:hover{
             flex-wrap: wrap;
             gap: 32px;
             padding: 64px 48px 40px;
+            position: relative;
         }
 
         .title-wrap {
@@ -270,6 +279,17 @@ a.card:hover{
             line-height: 1.6;
             margin: 0;
             color: #EDEDED;
+        }
+
+        .about-heading::after {
+            content: "MEET THE DUO  ✦  ✦  ✦";
+            position: absolute;
+            left: 48px;
+            bottom: 8px;
+            color: var(--yellow);
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
         }
 
         /* ---------- CARDS ---------- */
@@ -399,8 +419,8 @@ a.card:hover{
         }
 
         a.card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 28px rgba(0, 0, 0, 0.35);
+            transform: translateY(-10px) rotate(-1deg);
+            box-shadow: 0 20px 35px rgba(255, 212, 0, 0.35);
         }
 
         .photo-img {
