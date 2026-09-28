@@ -11,6 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Nunito:wght@400;600;700;800&display=swap"
         rel="stylesheet">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
         :root {
             --yellow: #FFD400;
@@ -85,13 +87,6 @@
 
         /* ================= NAV MENU & TOGGLE ================= */
 
-        .nav-menu{
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            order: 3;
-        }
-
         .nav-links{
             display: flex;
             gap: 40px;
@@ -106,28 +101,6 @@
             font-weight: 800;
             font-style: italic;
             letter-spacing: 0.5px;
-        }
-
-        .nav-toggle{
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            gap: 5px;
-            width: 34px;
-            height: 34px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            order: 2;
-        }
-
-        .nav-toggle span{
-            display: block;
-            width: 100%;
-            height: 3px;
-            background: var(--black);
-            border-radius: 2px;
         }
 
         /* ================= PROFILE ================= */
@@ -310,19 +283,6 @@
 
             .navbar{ flex-wrap: wrap; gap: 12px; }
 
-            .nav-toggle{ display: flex; }
-
-            .nav-menu{
-                width: 100%;
-                display: none;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 14px;
-                margin-top: 8px;
-            }
-
-            .nav-menu.open{ display: flex; }
-
             .nav-links{
                 flex-direction: column;
                 gap: 12px;
@@ -333,6 +293,48 @@
                 height: 110px;
             }
         }
+
+        /* ================= OVERRIDE BOOTSTRAP NAVBAR ================= */
+
+        .navbar-toggler {
+            border: 3px solid var(--black);
+            padding: 4px 8px;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: 0 0 0 3px rgba(11, 10, 10, 0.35);
+        }
+
+        .navbar-collapse {
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .navbar-collapse {
+                justify-content: flex-end;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .navbar-collapse {
+                padding-top: 12px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .navbar-collapse .search-box,
+            .navbar-collapse .back-btn {
+                margin-top: 16px;
+            }
+
+            .navbar-collapse .back-btn {
+                display: inline-block;
+            }
+        }
     </style>
 </head>
 
@@ -340,18 +342,16 @@
 
     <!-- ================= NAVBAR ================= -->
 
-    <nav class="navbar">
+    <nav class="navbar navbar-expand-md">
 
         <div class="logo">
             <div class="logo-icon"></div>
             <span class="logo-text">DUO-DEV</span>
         </div>
 
-        <button class="nav-toggle" id="navToggle" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="navMenu">
-            <span></span><span></span><span></span>
-        </button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Buka menu navigasi"><span class="navbar-toggler-icon"></span></button>
 
-        <div class="nav-menu" id="navMenu">
+        <div class="collapse navbar-collapse" id="navMenu">
             <ul class="nav-links">
                 <li><a href="duodev.html">HOME</a></li>
                 <li><a href="profil-malfa.html">MALFA</a></li>
@@ -365,7 +365,6 @@
 
     </nav>
 
-
     <!-- ================= PROFILE ================= -->
 
     <main class="profile">
@@ -374,7 +373,6 @@
             <p>HALLOOO</p>
             <h1>ABOUT PUJI</h1>
         </div>
-
 
         <div class="layout">
 
@@ -391,7 +389,6 @@
                 <p class="role">
                     Mahasiswa
                 </p>
-
 
                 <div class="contact">
 
@@ -414,7 +411,6 @@
                 </div>
 
             </aside>
-
 
             <!-- ================= MAIN CONTENT ================= -->
 
@@ -447,7 +443,6 @@
                     </p>
 
                 </section>
-
 
                 <!-- ================= FAVORIT ================= -->
 
@@ -502,21 +497,13 @@
 
         </div>
 
-
         <footer>
             © Puji Puji — DUO-DEV
         </footer>
 
     </main>
 
-    <script>
-        const navToggle = document.getElementById('navToggle');
-        const navMenu = document.getElementById('navMenu');
-        navToggle.addEventListener('click', () => {
-            const isOpen = navMenu.classList.toggle('open');
-            navToggle.setAttribute('aria-expanded', isOpen);
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
